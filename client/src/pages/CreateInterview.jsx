@@ -15,18 +15,7 @@ const CreateInterview = () => {
       techStack: "",
     });
 
-  // const [mcqs, setMcqs] =
-  //   useState([]);
-
-  // const [
-  //   codingQuestion,
-  //   setCodingQuestion,
-  // ] = useState(null);
-
-  // const [
-  //   interviewId,
-  //   setInterviewId,
-  // ] = useState("");
+  
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
@@ -99,18 +88,7 @@ const CreateInterview = () => {
             }
           );
 
-        // setMcqs(
-        //   res.data.mcqs
-        // );
-
-        // setCodingQuestion(
-        //   res.data
-        //     .codingQuestion
-        // );
-
-        // setInterviewId(
-        //   res.data._id
-        // );
+        
         navigate("/mcq-interview", {
           state: {
             mcqs: res.data.mcqs,
@@ -203,24 +181,6 @@ const CreateInterview = () => {
           </button>
         </form>
 
-        {/* {mcqs.length >
-          0 && (
-          <Link
-            to="/mcq-interview"
-            state={{
-              mcqs,
-              codingQuestion,
-              interviewId,
-            }}
-          >
-            <button
-              className="bg-green-500 text-white px-6 py-3 rounded-lg w-full mt-4 hover:bg-green-600"
-            >
-              Start Mock
-              Interview
-            </button>
-          </Link>
-        )} */}
       </div>
     </div>
     <Footer/>
