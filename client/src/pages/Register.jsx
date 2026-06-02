@@ -2,6 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Footer from "../components/Footer";
+import validator from "validator";
 import {
   useNavigate,
   Link,
@@ -33,11 +34,8 @@ const Register = () => {
     async (e) => {
       e.preventDefault();
 
-      const emailRegex =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
       if (
-        !emailRegex.test(
+        !validator.isEmail(
           formData.email
         )
       ) {
