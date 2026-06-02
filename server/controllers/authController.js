@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const validator =
+  require("validator");
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -11,6 +13,25 @@ const generateToken = (id) => {
 const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+
+    console.log("Email:", email);
+    console.log(
+      "Valid:",
+      validator.isEmail(email)
+    );
+
+    if (
+      !validator.isEmail(
+        email
+      )
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "Invalid email address",
+        });
+    }
 
     const userExists = await User.findOne({ email });
 
